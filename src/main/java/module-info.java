@@ -4,6 +4,6 @@ module com.example.assignment {
     requires java.sql;
 
 
-    opens com.example.assignment to javafx.fxml;
+    opens com.example.assignment to javafx.graphics;
     exports com.example.assignment;
 }

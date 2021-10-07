@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.assignment.SignUpController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="329.0" style="-fx-background-color: #222831;">
          <children>
@@ -24,20 +23,20 @@
       <AnchorPane prefHeight="400.0" prefWidth="404.0" style="-fx-background-color: #222831;">
          <children>
             <Label layoutX="34.0" layoutY="120.0" text="Username" textFill="WHITE" />
-            <TextField layoutX="34.0" layoutY="145.0" prefHeight="24.0" prefWidth="267.0" />
+            <TextField fx:id="user_name" layoutX="34.0" layoutY="145.0" prefHeight="24.0" prefWidth="267.0" />
             <Label layoutX="35.0" layoutY="183.0" text="Password" textFill="WHITE" />
-            <TextField layoutX="34.0" layoutY="209.0" prefHeight="26.0" prefWidth="266.0" />
-            <Button layoutX="34.0" layoutY="264.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: #00adb5;" text="Sign Up" textFill="WHITE">
+            <TextField fx:id="password" layoutX="34.0" layoutY="209.0" prefHeight="26.0" prefWidth="266.0" />
+            <Button fx:id="button_signup" layoutX="34.0" layoutY="264.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: #00adb5;" text="Sign Up" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
             <Label layoutX="126.0" layoutY="310.0" text="Already a user?" textFill="WHITE" />
-            <Button layoutX="117.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #222831; -fx-border-color: #00adb5;" text="Sign in!" textFill="WHITE" />
+            <Button fx:id="button_signin" layoutX="117.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #222831; -fx-border-color: #00adb5;" text="Sign in!" textFill="WHITE" />
             <Label layoutX="33.0" layoutY="54.0" text="First Name" textFill="WHITE" />
             <Label layoutX="189.0" layoutY="54.0" text="Last Name" textFill="WHITE" />
-            <TextField layoutX="33.0" layoutY="78.0" prefHeight="26.0" prefWidth="131.0" promptText="First name" />
-            <TextField layoutX="179.0" layoutY="79.0" prefHeight="26.0" prefWidth="131.0" promptText="Last name" />
+            <TextField fx:id="first_name" layoutX="33.0" layoutY="78.0" prefHeight="26.0" prefWidth="131.0" promptText="First name" />
+            <TextField fx:id="last_name" layoutX="179.0" layoutY="79.0" prefHeight="26.0" prefWidth="131.0" promptText="Last name" />
          </children>
       </AnchorPane>
    </children>

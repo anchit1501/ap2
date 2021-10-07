@@ -13,22 +13,22 @@ import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
     @FXML
-    private Button button_signup;
+    public Button button_signup;
 
     @FXML
-    private Button button_signin;
+    public Button button_signin;
 
     @FXML
-    private TextField first_name;
+    public TextField first_name;
 
     @FXML
-    private TextField last_name;
+    public TextField last_name;
 
     @FXML
-    private TextField user_name;
+    public TextField user_name;
 
     @FXML
-    private TextField password;
+    public TextField password;
 
 
     @Override
@@ -37,6 +37,7 @@ public class SignUpController implements Initializable {
         button_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("button_signup");
                 if (!user_name.getText().trim().isEmpty()) {
                     DBUtils.signUpUser(event, user_name.getText(), password.getText());
                 } else {

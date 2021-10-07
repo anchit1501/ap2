@@ -17,6 +17,7 @@ public class DBUtils {
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String userName) {
 
         Parent root = null;
+        System.out.println("clicked");
 
         if (userName != null) {
             try {

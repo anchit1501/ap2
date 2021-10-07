@@ -26,13 +26,13 @@
                 <TextField fx:id="user_name" layoutX="34.0" layoutY="85.0" prefHeight="24.0" prefWidth="267.0" />
                 <Label layoutX="35.0" layoutY="123.0" text="Password" textFill="WHITE" />
                 <TextField fx:id="user_password" layoutX="34.0" layoutY="149.0" prefHeight="26.0" prefWidth="266.0" />
-                <Button fx:id="button_loginbutton_login" layoutX="34.0" layoutY="204.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: #00adb5;" text="Sign In" textFill="WHITE">
+                <Button fx:id="button_login" layoutX="34.0" layoutY="204.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: #00adb5;" text="Sign In" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
                 <Label layoutX="107.0" layoutY="297.0" text="Not a registered user?" textFill="WHITE" />
-                <Button fx:id="button_sign_upbutton_sign_up" layoutX="86.0" layoutY="325.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="161.0" style="-fx-background-color: #222831; -fx-border-color: #00adb5;" text="Sign Up Now!" textFill="WHITE" />
+                <Button fx:id="button_signup" layoutX="86.0" layoutY="325.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="161.0" style="-fx-background-color: #222831; -fx-border-color: #00adb5;" text="Sign Up Now!" textFill="WHITE" />
             </children>
         </AnchorPane>
     </children>
