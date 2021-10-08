@@ -25,16 +25,5 @@
             </Menu>
          </menus>
       </MenuBar>
-      <AnchorPane prefHeight="41.0" prefWidth="600.0" style="-fx-background-color: #393e46;">
-         <children>
-            <Label fx:id="label_quote" layoutX="41.0" layoutY="10.0" prefHeight="17.0" prefWidth="290.0" text="Lorem ipsum dolor set amet......" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="button_profile" layoutX="461.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #00adb5;" text="Profile" />
-            <Button fx:id="button_logout" layoutX="527.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: #00adb5;" text="Logout" />
-         </children>
-      </AnchorPane>
    </children>
 </VBox>
