@@ -1,38 +1,26 @@
 package Controller;
 
-import Utils.DBUtils;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+public class DashboardController {
 
-public class DashboardController implements Initializable {
 
     @FXML
-    Label label_quote;
+    private Button button_logout;
 
     @FXML
-    public Button button_profile;
+    private MenuBar button_menu;
 
     @FXML
-    public Button button_logout;
+    private Button button_profile;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        button_profile.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "profile.fxml", "Edit Profile", null);
-            }
-        });
-    }
+    @FXML
+    private Label daily_quote;
 
-    public void setUserInfo(String userName) {
-//        label_quote.setText("Welcome" + userName + "...!");
-    }
+    @FXML
+    private TabPane project_pane;
+
+
+
 }

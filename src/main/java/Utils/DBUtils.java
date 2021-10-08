@@ -25,7 +25,7 @@ public class DBUtils {
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
                 root = loader.load();
                 DashboardController dashboardController = loader.getController();
-                dashboardController.setUserInfo(userName);
+//                dashboardController.setUserInfo(userName);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -72,8 +72,7 @@ public class DBUtils {
 
                 System.out.println(psInsert);
                 psInsert.executeUpdate();
-
-                changeScene(event, "sign-in.fxml", "Welcome", userName);
+                changeScene(event, "/view/landing-dashboard.fxml", "Welcome", userName);
 
             }
 
@@ -131,8 +130,7 @@ public class DBUtils {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("user_password");
                     if (retrievedPassword.equals(password)) {
-                        System.out.println("Valid login");
-                        changeScene(event, "/view/dashboard.fxml", "Welcome", userName);
+                        changeScene(event, "/view/dash.fxml", "Welcome", null);
 
 
                     } else {
@@ -174,4 +172,6 @@ public class DBUtils {
         }
 
     }
+
+
 }

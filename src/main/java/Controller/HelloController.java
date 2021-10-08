@@ -37,7 +37,6 @@ public class HelloController implements Initializable {
         button_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println(("button_sig_up"));
                 DBUtils.changeScene(event,"/view/sign-up.fxml","Sign Up",null);
             }
         });
