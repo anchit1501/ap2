@@ -1,26 +1,47 @@
 package Controller;
 
+import Utils.DatabaseUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
-public class DashboardController {
+import java.net.URL;
+import java.util.ResourceBundle;
 
-
-    @FXML
-    private Button button_logout;
-
-    @FXML
-    private MenuBar button_menu;
+public class DashboardController implements Initializable {
 
     @FXML
-    private Button button_profile;
+    public MenuItem button_delete_project;
 
     @FXML
-    private Label daily_quote;
+    public Button button_logout;
 
     @FXML
-    private TabPane project_pane;
+    public MenuBar button_menu;
 
+    @FXML
+    public MenuItem button_new_project;
 
+    @FXML
+    public Button button_profile;
+
+    @FXML
+    public Label daily_quote;
+
+    @FXML
+    public TabPane project_pane;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        button_new_project.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DatabaseUtils.changeScene(event, "/view/popup.fxml", "Popup", null);
+            }
+        });
+    }
 
 }

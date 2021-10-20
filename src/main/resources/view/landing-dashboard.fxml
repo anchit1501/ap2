@@ -7,28 +7,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LandingDashboard">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardController">
    <children>
       <VBox layoutX="-5.0" prefHeight="400.0" prefWidth="609.0">
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="Workspace">
+                <Menu fx:id="button_workspace" mnemonicParsing="false" text="Workspace">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="New Project" />
+                    <MenuItem fx:id="button_new_project" mnemonicParsing="false" text="New Project" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Project">
+                <Menu fx:id="button_project" mnemonicParsing="false" text="Project">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
+                    <MenuItem fx:id="button_delete" mnemonicParsing="false" text="Delete" />
                   </items>
                 </Menu>
               </menus>
             </MenuBar>
             <AnchorPane prefHeight="56.0" prefWidth="590.0">
                <children>
-                  <Label layoutX="33.0" layoutY="20.0" prefHeight="17.0" prefWidth="289.0" text="Lorem ipsum dolor sit amet" />
+                  <Label fx:id="quote_label" layoutX="33.0" layoutY="20.0" prefHeight="17.0" prefWidth="289.0" text="Lorem ipsum dolor sit amet" />
                </children>
             </AnchorPane>
          </children>

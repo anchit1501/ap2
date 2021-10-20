@@ -1,6 +1,6 @@
 package Controller;
 
-import Utils.DBUtils;
+import Utils.DatabaseUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -56,7 +56,7 @@ public class SignUpController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (!user_name.getText().trim().isEmpty()) {
-                    DBUtils.signUpUser(event, user_name.getText(), user_password.getText(), first_name.getText(), last_name.getText());
+                    DatabaseUtils.signUpUser(event, user_name.getText(), user_password.getText(), first_name.getText(), last_name.getText());
                 } else {
                     System.out.println("Please fill in all");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -69,7 +69,7 @@ public class SignUpController implements Initializable {
         button_signin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/view/sign-in.fxml", "Login", null);
+                DatabaseUtils.changeScene(event, "/view/sign-in.fxml", "Login", null);
             }
         });
 
