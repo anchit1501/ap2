@@ -14,6 +14,8 @@ import java.io.IOException;
 
 public class DatabaseUtils {
 
+    private static String userID;
+
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String userName) {
 
         Parent root = null;
@@ -101,11 +103,11 @@ public class DatabaseUtils {
         ResultSet resultSet = null;
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trello", "root", "admin@123");
-            preparedStatement = connection.prepareStatement("SELECT user_password from users where user_name =?");
+            preparedStatement = connection.prepareStatement("SELECT id,user_password from users where user_name =?");
             preparedStatement.setString(1, userName);
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.isBeforeFirst()) {
-                System.out.println("User not found in databse!");
+                System.out.println("User not found in database!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Provided credential are incorrect");
                 alert.show();
@@ -113,6 +115,7 @@ public class DatabaseUtils {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("user_password");
                     if (retrievedPassword.equals(password)) {
+                        userID =  resultSet.getString("id");
                         changeScene(event, "/view/dash.fxml", "Welcome", null);
 
 
@@ -162,20 +165,21 @@ public class DatabaseUtils {
         ResultSet resultSet = null;
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trello", "root", "admin@123");
-            preparedStatement = connection.prepareStatement("INSERT INTO projects(project_name) VALUES (?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO projects(project_name,user_id) VALUES (?,?)");
             preparedStatement.setString(1, projectName);
-            resultSet = preparedStatement.executeQuery();
+            preparedStatement.setString(2,userID);
+            preparedStatement.executeUpdate();
+            changeScene(event, "/view/dash.fxml", "Welcome", null);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (resultSet != null) {
+            if (preparedStatement != null) {
                 try {
-                    resultSet.close();
+                    preparedStatement.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-
             if (connection != null) {
                 try {
                     connection.close();
