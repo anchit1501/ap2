@@ -104,5 +104,14 @@ public class DashboardController implements Initializable {
                 stage.show();
             }
         });
+
+        button_profile.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DatabaseUtils.changeScene(event, "/view/profile.fxml", "Login", null);
+            }
+        });
+
+
     }
 }
