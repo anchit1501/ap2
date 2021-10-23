@@ -69,7 +69,7 @@ public class SignUpController implements Initializable {
         button_signin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DatabaseUtils.changeScene(event, "/view/sign-in.fxml", "Login", null);
+                DatabaseUtils.changeScene(event, "/view/signIn.fxml", "Login", null);
             }
         });
 

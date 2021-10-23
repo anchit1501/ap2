@@ -1,6 +1,5 @@
 package Utils;
 
-import Model.ProjectModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -58,7 +57,7 @@ public class DatabaseUtils {
                 psInsert.setString(3, firstName);
                 psInsert.setString(4, last_name);
                 psInsert.executeUpdate();
-                changeScene(event, "/view/sign-in.fxml", "Welcome", userName);
+                changeScene(event, "/view/signIn.fxml", "Welcome", userName);
 
             }
 
@@ -117,7 +116,7 @@ public class DatabaseUtils {
                     String retrievedPassword = resultSet.getString("user_password");
                     if (retrievedPassword.equals(password)) {
                         userID =  resultSet.getString("id");
-                        changeScene(event, "/view/dash.fxml", "Welcome", null);
+                        changeScene(event, "/view/dashboard.fxml", "Welcome", null);
 
 
                     } else {
@@ -170,7 +169,7 @@ public class DatabaseUtils {
             preparedStatement.setString(1, projectName);
             preparedStatement.setString(2,userID);
             preparedStatement.executeUpdate();
-            changeScene(event, "/view/dash.fxml", "Welcome", null);
+            changeScene(event, "/view/dashboard.fxml", "Welcome", null);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -210,7 +209,7 @@ public class DatabaseUtils {
 //                    String retrievedPassword = resultSet.getString("user_password");
 //                    if (retrievedPassword.equals(password)) {
 //                        userID =  resultSet.getString("id");
-//                        changeScene(event, "/view/dash.fxml", "Welcome", null);
+//                        changeScene(event, "/view/dashboard.fxml", "Welcome", null);
 //
 //
 //                    } else {

@@ -37,7 +37,7 @@ public class HelloController implements Initializable {
         button_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DatabaseUtils.changeScene(event,"/view/sign-up.fxml","Sign Up",null);
+                DatabaseUtils.changeScene(event, "/view/signUp.fxml","Sign Up",null);
             }
         });
     }
