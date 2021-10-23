@@ -1,6 +1,10 @@
 package Controller;
 
+import Model.ProjectModel;
+import Utils.DatabaseConnection;
 import Utils.DatabaseUtils;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,6 +17,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -38,8 +46,47 @@ public class DashboardController implements Initializable {
     @FXML
     public TabPane project_pane;
 
+    ObservableList<ProjectModel> projectModelObservableList = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getDBConnection();
+
+        String getprojectsQuery = "SELECT * from projects where user_id = 4";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryResult = statement.executeQuery(getprojectsQuery);
+            while (queryResult.next()) {
+                Integer id = queryResult.getInt("id");
+                String projectName = queryResult.getString("project_name");
+                Integer status = queryResult.getInt("status");
+                Integer userId = queryResult.getInt("user_id");
+
+                // Populate Observable List
+                projectModelObservableList.add(new ProjectModel(id, projectName, status, userId));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for (ProjectModel project : projectModelObservableList) {
+            // create Tab
+            Tab tab = new Tab(project.getProjectName());
+
+            // create a label
+            Label label = new Label(project.getProjectName());
+
+            // add label to the tab
+            tab.setContent(label);
+
+            // add tab
+            project_pane.getTabs().add(tab);
+        }
+
 
         button_new_project.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -58,5 +105,4 @@ public class DashboardController implements Initializable {
             }
         });
     }
-
 }

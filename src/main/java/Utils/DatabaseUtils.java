@@ -1,5 +1,6 @@
 package Utils;
 
+import Model.ProjectModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -189,4 +190,69 @@ public class DatabaseUtils {
             }
         }
     }
+
+    public static ResultSet getProjectList() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trello", "root", "admin@123");
+            preparedStatement = connection.prepareStatement("SELECT * from projects where user_id =?");
+            preparedStatement.setString(1, userID);
+            resultSet = preparedStatement.executeQuery();
+//            if (!resultSet.isBeforeFirst()) {
+//                System.out.println("User not found in database!");
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setContentText("Provided credential are incorrect");
+//                alert.show();
+//            } else {
+//                while (resultSet.next()) {
+//                    String retrievedPassword = resultSet.getString("user_password");
+//                    if (retrievedPassword.equals(password)) {
+//                        userID =  resultSet.getString("id");
+//                        changeScene(event, "/view/dash.fxml", "Welcome", null);
+//
+//
+//                    } else {
+//                        System.out.println("Password mismatch");
+//                        Alert alert = new Alert(Alert.AlertType.ERROR);
+//                        alert.setContentText("Provided credential are incorrect");
+//                        alert.show();
+//                    }
+//                }
+//            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (preparedStatement != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return resultSet;
+
+        }
+
+    }
+
 }
