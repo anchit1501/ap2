@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardController">
    <children>
-      <HBox prefHeight="60.0" prefWidth="600.0">
+      <HBox prefHeight="26.0" prefWidth="600.0">
          <children>
             <MenuBar fx:id="button_menu">
               <menus>
@@ -30,14 +30,14 @@
             </MenuBar>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutY="71.0" prefHeight="60.0" prefWidth="608.0">
+      <HBox alignment="CENTER" layoutX="-4.0" layoutY="28.0" prefHeight="60.0" prefWidth="608.0" style="-fx-background-color: #222831;">
          <children>
-            <Label fx:id="daily_quote" prefHeight="17.0" prefWidth="312.0" text="Daily Quote" />
+            <Label fx:id="daily_quote" prefHeight="17.0" prefWidth="312.0" text="Daily Quote" textFill="WHITE" />
             <Button fx:id="button_profile" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: #00adb5;" text="Profile" textFill="WHITE" />
             <Button fx:id="button_logout" mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" style="-fx-background-color: #00adb5;" text="Logout" textFill="WHITE" />
          </children>
       </HBox>
-      <TabPane fx:id="project_pane" layoutY="138.0" prefHeight="264.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="project_pane" layoutY="88.0" prefHeight="314.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Untitled Tab 1">
             <content>
