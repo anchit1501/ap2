@@ -12,36 +12,35 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PopupController implements Initializable {
+public class NewColumnController implements Initializable {
+    @FXML
+    public Button cancelButton;
 
     @FXML
-    public Button button_cancel;
+    public Button createButton;
 
     @FXML
-    public Button button_create;
-
-    @FXML
-    public TextField project_name;
+    public TextField columnName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        button_cancel.setOnAction(new EventHandler<ActionEvent>() {
+        cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 DatabaseUtils.changeScene(event, "/view/dashboard.fxml", "Login", null);
             }
         });
 
-        button_create.setOnAction(new EventHandler<ActionEvent>() {
+        createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (!project_name.getText().trim().isEmpty()) {
-                    DatabaseUtils.createNewProject(event, project_name.getText().trim());
+                if (!columnName.getText().trim().isEmpty()) {
+                    DatabaseUtils.createNewColumn(event, columnName.getText().trim());
                 } else {
-                    System.out.println("Please enter a valid project name");
+                    System.out.println("Please enter a valid column name");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Please enter a valid project name");
+                    alert.setContentText("Please enter a valid column name");
                     alert.show();
                 }
             }

@@ -23,7 +23,10 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Project">
                   <items>
-                    <MenuItem fx:id="button_delete_project" mnemonicParsing="false" text="Delete" />
+                    <MenuItem fx:id="addColumnButton" mnemonicParsing="false" text="Add Column" />
+                        <MenuItem fx:id="renameButton" mnemonicParsing="false" text="Rename" />
+                        <MenuItem fx:id="setAsDefaultButton" mnemonicParsing="false" text="Set As default" />
+                        <MenuItem fx:id="deleteButton" mnemonicParsing="false" text="Delete" />
                   </items>
                 </Menu>
               </menus>

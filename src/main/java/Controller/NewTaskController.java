@@ -13,34 +13,34 @@ import java.util.ResourceBundle;
 public class NewTaskController implements Initializable {
 
     @FXML
-    private Button cancel_task;
+    private Button cancelTaskButton;
 
     @FXML
     private CheckBox completed;
 
     @FXML
-    private Button create_task;
+    private Button createTaskButton;
 
     @FXML
-    private DatePicker due_date;
+    private DatePicker dueDate;
 
     @FXML
-    private TextArea task_description;
+    private TextArea taskDescription;
 
     @FXML
-    private TextField task_name;
+    private TextField taskName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        cancel_task.setOnAction(new EventHandler<ActionEvent>() {
+        cancelTaskButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 DatabaseUtils.changeScene(event, "/view/dashboard.fxml", "Dashboard", null);
             }
         });
 
-        create_task.setOnAction(new EventHandler<ActionEvent>() {
+        createTaskButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 DatabaseUtils.changeScene(event, "/view/dashboard.fxml", "Dashboard", null);

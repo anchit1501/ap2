@@ -46,6 +46,19 @@ public class DashboardController implements Initializable {
     @FXML
     public TabPane project_pane;
 
+    @FXML
+    public MenuItem renameButton;
+
+    @FXML
+    public MenuItem setAsDefaultButton;
+
+    @FXML
+    public MenuItem addColumnButton;
+
+    @FXML
+    public MenuItem deleteButton;
+
+
     ObservableList<ProjectModel> projectModelObservableList = FXCollections.observableArrayList();
 
     @Override
@@ -54,7 +67,9 @@ public class DashboardController implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getDBConnection();
 
-        String getprojectsQuery = "SELECT * from projects where user_id = 4";
+        project_pane.getTabs().clear();
+
+        String getprojectsQuery = "SELECT * from projects where user_id = 6";
 
         try {
             Statement statement = connectDB.createStatement();
@@ -109,6 +124,23 @@ public class DashboardController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 DatabaseUtils.changeScene(event, "/view/profile.fxml", "Login", null);
+            }
+        });
+
+        addColumnButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Stage stage = (Stage) daily_quote.getScene().getWindow();
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("/view/newColumn.fxml"));
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                stage.setTitle(("Add New Column"));
+                stage.setScene(new Scene(root, 600, 400));
+                stage.show();
             }
         });
 
