@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.ColumnModel;
 import Model.ProjectModel;
 import Utils.DatabaseConnection;
 import Utils.DatabaseUtils;
@@ -60,6 +61,7 @@ public class DashboardController implements Initializable {
 
 
     ObservableList<ProjectModel> projectModelObservableList = FXCollections.observableArrayList();
+    ObservableList<ColumnModel> columnModelObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -101,6 +103,33 @@ public class DashboardController implements Initializable {
             // add tab
             project_pane.getTabs().add(tab);
         }
+
+
+//        Get columns
+        String getcolumnsQuery = "SELECT * from columns where project_id = 1";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryResult = statement.executeQuery(getcolumnsQuery);
+            while (queryResult.next()) {
+                Integer id = queryResult.getInt("id");
+                String columnName = queryResult.getString("column_name");
+                Integer status = queryResult.getInt("status");
+                Integer projectId = queryResult.getInt("project_id");
+
+                // Populate Observable List
+                columnModelObservableList.add(new ColumnModel(id, columnName, status, projectId));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(columnModelObservableList);
+
+        if(columnModelObservableList.size()>0){
+
+        }
+
 
 
         button_new_project.setOnAction(new EventHandler<ActionEvent>() {
