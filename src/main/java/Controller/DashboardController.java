@@ -14,6 +14,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -59,7 +62,22 @@ public class DashboardController implements Initializable {
     @FXML
     public MenuItem deleteButton;
 
+    @FXML
+    public ScrollPane scrollBar;
 
+    @FXML
+    public Button columnButton;
+
+    @FXML
+    public HBox columnHbox;
+
+    @FXML
+    public Label columnLabel;
+
+    @FXML
+    public ToolBar columnToolbar;
+
+    String activeProjectTab = null;
     ObservableList<ProjectModel> projectModelObservableList = FXCollections.observableArrayList();
     ObservableList<ColumnModel> columnModelObservableList = FXCollections.observableArrayList();
 
@@ -104,6 +122,11 @@ public class DashboardController implements Initializable {
             project_pane.getTabs().add(tab);
         }
 
+        project_pane.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
+            System.err.println(newTab.getId());
+            activeProjectTab = newTab.getId();
+        });
+
 
 //        Get columns
         String getcolumnsQuery = "SELECT * from columns where project_id = 1";
@@ -127,7 +150,16 @@ public class DashboardController implements Initializable {
         System.out.println(columnModelObservableList);
 
         if(columnModelObservableList.size()>0){
-
+            final Rectangle rect = new Rectangle(200, 200, 800, 600);
+            rect.setFill(Color.RED);
+            final ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setContent(rect);
+//            project_pane.getTabs(activeProjectTab)
+            project_pane.getSelectionModel().getSelectedItem().setContent(scrollPane);
+//            project_pane.getTabs().add(tabA);
+        }
+        else {
+            columnHbox.getChildren().clear();
         }
 
 
