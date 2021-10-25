@@ -14,7 +14,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -129,7 +132,7 @@ public class DashboardController implements Initializable {
 
 
 //        Get columns
-        String getcolumnsQuery = "SELECT * from columns where project_id = 1";
+        String getcolumnsQuery = "SELECT * from columns where project_id = 4";
 
         try {
             Statement statement = connectDB.createStatement();
@@ -150,18 +153,11 @@ public class DashboardController implements Initializable {
         System.out.println(columnModelObservableList);
 
         if(columnModelObservableList.size()>0){
-            final Rectangle rect = new Rectangle(200, 200, 800, 600);
-            rect.setFill(Color.RED);
-            final ScrollPane scrollPane = new ScrollPane();
-            scrollPane.setContent(rect);
-//            project_pane.getTabs(activeProjectTab)
-            project_pane.getSelectionModel().getSelectedItem().setContent(scrollPane);
-//            project_pane.getTabs().add(tabA);
+           generateColumns();
         }
         else {
             columnHbox.getChildren().clear();
         }
-
 
 
         button_new_project.setOnAction(new EventHandler<ActionEvent>() {
@@ -205,6 +201,46 @@ public class DashboardController implements Initializable {
             }
         });
 
+
+    }
+
+    private void generateColumns() {
+        final ScrollPane scrollPane = new ScrollPane();
+        project_pane.getSelectionModel().getSelectedItem().setContent(scrollPane);
+
+
+
+
+        final HBox columnPane = new HBox();
+        createToolbars(columnPane);
+
+        scrollPane.setContent(columnPane);
+
+    }
+
+    public void createToolbars(HBox columnPane){
+
+        for(ColumnModel column: columnModelObservableList){
+            System.out.println(column.getColumnName());
+            Label toolbarLabel = new Label(column.getColumnName());
+            Button button1 = new Button("Add Task");
+            button1.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println(column.getId());
+//                    DatabaseUtils.changeScene(event, "/view/profile.fxml", "Login", null);
+                }
+            });
+
+            final ToolBar columnToolbar = new ToolBar();
+            columnToolbar.setStyle("-fx-padding: 5px;");
+            columnToolbar.getItems().add(toolbarLabel);
+            columnToolbar.getItems().add(button1);
+            final VBox columnVbox = new VBox(columnToolbar);
+            columnVbox.getChildren().add( new Button("Task 1"));
+            columnPane.getChildren().add(columnVbox);
+
+        }
 
     }
 }

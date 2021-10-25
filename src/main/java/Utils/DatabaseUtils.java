@@ -196,7 +196,7 @@ public class DatabaseUtils {
         ResultSet resultSet = null;
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trello", "root", "admin@123");
-            preparedStatement = connection.prepareStatement("INSERT INTO column(column_name,project_id) VALUES (?,?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO columns(column_name,project_id) VALUES (?,?)");
             preparedStatement.setString(1, projectName);
             preparedStatement.setString(2,userID);
             preparedStatement.executeUpdate();

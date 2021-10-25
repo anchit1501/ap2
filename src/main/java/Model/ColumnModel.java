@@ -4,14 +4,14 @@ public class ColumnModel {
 
 
     private final Integer id;
-    private final String columntName;
+    private final String columnName;
     private final Integer status;
     private final Integer projectId;
 
 
     public ColumnModel(Integer id, String columntName, Integer status, Integer projectId) {
         this.id = id;
-        this.columntName = columntName;
+        this.columnName = columntName;
         this.status = status;
         this.projectId = projectId;
     }
@@ -20,8 +20,8 @@ public class ColumnModel {
         return id;
     }
 
-    public String getColumntName() {
-        return columntName;
+    public String getColumnName() {
+        return columnName;
     }
 
     public Integer getStatus() {
