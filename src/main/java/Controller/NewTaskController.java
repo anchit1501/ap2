@@ -13,22 +13,22 @@ import java.util.ResourceBundle;
 public class NewTaskController implements Initializable {
 
     @FXML
-    private Button cancelTaskButton;
+    public Button cancelTaskButton;
 
     @FXML
-    private CheckBox completed;
+    public CheckBox completed;
 
     @FXML
-    private Button createTaskButton;
+    public Button createTaskButton;
 
     @FXML
-    private DatePicker dueDate;
+    public DatePicker dueDate;
 
     @FXML
-    private TextArea taskDescription;
+    public TextArea taskDescription;
 
     @FXML
-    private TextField taskName;
+    public TextField taskName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

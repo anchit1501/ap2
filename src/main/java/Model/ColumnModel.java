@@ -9,9 +9,9 @@ public class ColumnModel {
     private final Integer projectId;
 
 
-    public ColumnModel(Integer id, String columntName, Integer status, Integer projectId) {
+    public ColumnModel(Integer id, String columnName, Integer status, Integer projectId) {
         this.id = id;
-        this.columnName = columntName;
+        this.columnName = columnName;
         this.status = status;
         this.projectId = projectId;
     }

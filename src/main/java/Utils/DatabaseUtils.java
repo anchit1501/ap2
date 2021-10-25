@@ -190,34 +190,5 @@ public class DatabaseUtils {
         }
     }
 
-    public static void createNewColumn(ActionEvent event, String projectName) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trello", "root", "admin@123");
-            preparedStatement = connection.prepareStatement("INSERT INTO columns(column_name,project_id) VALUES (?,?)");
-            preparedStatement.setString(1, projectName);
-            preparedStatement.setString(2,userID);
-            preparedStatement.executeUpdate();
-            changeScene(event, "/view/dashboard.fxml", "Welcome", null);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+
 }

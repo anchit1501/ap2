@@ -228,7 +228,7 @@ public class DashboardController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     System.out.println(column.getId());
-//                    DatabaseUtils.changeScene(event, "/view/profile.fxml", "Login", null);
+                    DatabaseUtils.changeScene(event, "/view/newTask.fxml", "Login", null);
                 }
             });
 

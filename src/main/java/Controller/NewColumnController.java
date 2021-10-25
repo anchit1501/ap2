@@ -1,5 +1,6 @@
 package Controller;
 
+import DAO.ColumnDao;
 import Utils.DatabaseUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -36,7 +37,7 @@ public class NewColumnController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (!columnName.getText().trim().isEmpty()) {
-                    DatabaseUtils.createNewColumn(event, columnName.getText().trim());
+                    ColumnDao.createNewColumn(event, columnName.getText().trim(),"1");
                 } else {
                     System.out.println("Please enter a valid column name");
                     Alert alert = new Alert(Alert.AlertType.ERROR);

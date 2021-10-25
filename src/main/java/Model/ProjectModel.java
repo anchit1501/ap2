@@ -3,10 +3,10 @@ package Model;
 public class ProjectModel {
 
 
-    private final Integer id;
-    private final String projectName;
-    private final Integer status;
-    private final Integer userId;
+    private Integer id;
+    private String projectName;
+    private Integer status;
+    private Integer userId;
 
 
     public ProjectModel(Integer id, String projectName, Integer status, Integer userId) {
@@ -30,5 +30,21 @@ public class ProjectModel {
 
     public Integer getUserId() {
         return userId;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }
