@@ -1,5 +1,6 @@
 package Controller;
 
+import DAO.UserDao;
 import Utils.DatabaseUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
@@ -30,7 +32,11 @@ public class HelloController implements Initializable {
         button_signin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DatabaseUtils.logInUser(event,user_name.getText(), user_password.getText());
+                try {
+                    UserDao.logInUser(event,user_name.getText(), user_password.getText());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

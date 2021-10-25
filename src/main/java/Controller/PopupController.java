@@ -1,5 +1,6 @@
 package Controller;
 
+import DAO.ProjectDao;
 import Utils.DatabaseUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,7 +38,7 @@ public class PopupController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (!project_name.getText().trim().isEmpty()) {
-                    DatabaseUtils.createNewProject(event, project_name.getText().trim());
+                    ProjectDao.createNewProject(event, project_name.getText().trim());
                 } else {
                     System.out.println("Please enter a valid project name");
                     Alert alert = new Alert(Alert.AlertType.ERROR);

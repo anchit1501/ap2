@@ -1,5 +1,6 @@
 package Controller;
 
+import DAO.TaskDao;
 import Utils.DatabaseUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,6 +34,8 @@ public class NewTaskController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        Integer columnId = null;
+
         cancelTaskButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -43,7 +46,16 @@ public class NewTaskController implements Initializable {
         createTaskButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DatabaseUtils.changeScene(event, "/view/dashboard.fxml", "Dashboard", null);
+
+                if (!taskName.getText().trim().isEmpty()) {
+                    TaskDao.createTask(taskName.getText(),taskDescription.getText(),columnId);
+                    DatabaseUtils.changeScene(event, "/view/dashboard.fxml", "Dashboard", null);
+                } else {
+                    System.out.println("Please enter a task name");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please enter a task name");
+                    alert.show();
+                }
             }
         });
     }

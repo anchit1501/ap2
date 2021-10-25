@@ -1,5 +1,6 @@
 package Controller;
 
+import DAO.UserDao;
 import Utils.DatabaseUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -56,7 +57,7 @@ public class SignUpController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (!user_name.getText().trim().isEmpty()) {
-                    DatabaseUtils.signUpUser(event, user_name.getText(), user_password.getText(), first_name.getText(), last_name.getText());
+                    UserDao.signUpUser(event, user_name.getText(), user_password.getText(), first_name.getText(), last_name.getText());
                 } else {
                     System.out.println("Please fill in all");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
